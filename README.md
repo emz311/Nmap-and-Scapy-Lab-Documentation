@@ -21,7 +21,7 @@ This was performed to know the number of host(s) that are available for use.
 sudo nmap -O 10.6.6.23
 ```
 Identify the operating system by analyzing network responses OS is Linux
-## SMB Agressive Enumeration
+# SMB Agressive Enumeration
 ### Port 21 Aggressive Service Scan
 ```bash
 nmap -p21 -sV -A -T4 10.6.6.23
