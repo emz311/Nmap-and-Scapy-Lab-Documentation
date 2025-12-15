@@ -76,11 +76,15 @@ scapy          # Enter the Scapy interactive environment
 while you are inside scapy
 ```bash
 ls()           # List all available protocols
-ls(IP)         # View IP packet header fields
+ls(IP)         # View IP packet header type
 ```
+to delete a command type clear
 The source tells us where the packet is coming from
 ### Basic Packet Sniffing
 ```bash
 sniff()         
 ```
 sniff function help sniff network traffic like wireshark or tcpdump
+to sniff a website open another terminal window and type ping google.com
+to cancel requests press ctrl + Z together.
+
