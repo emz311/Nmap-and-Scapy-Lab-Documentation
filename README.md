@@ -1,4 +1,4 @@
-<img width="1278" height="798" alt="image" src="https://github.com/user-attachments/assets/d799436d-61d0-46db-93cd-cbb26c88f3e2" /># Nmap and Scapy Lab Documentation
+# Nmap and Scapy Lab Documentation
 Practical Lab on network reconnaissance and traffic analysis
 This document outlines the procedures for performing host discovery, service enumeration, operating system detection, SMB scanning, packet crafting, packet sniffing, and ICMP traffic analysis within an internal lab network using Nmap and Scapy. The purpose of this lab was to gain hands-on experience with network reconnaissance, service enumeration, and packet analysis
 ### Lab environment
