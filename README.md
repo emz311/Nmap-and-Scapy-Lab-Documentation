@@ -1,4 +1,4 @@
-# Nmap and Scapy Lab Documentation
+<img width="1278" height="798" alt="image" src="https://github.com/user-attachments/assets/d799436d-61d0-46db-93cd-cbb26c88f3e2" /># Nmap and Scapy Lab Documentation
 Practical Lab on network reconnaissance and traffic analysis
 This document outlines the procedures for performing host discovery, service enumeration, operating system detection, SMB scanning, packet crafting, packet sniffing, and ICMP traffic analysis within an internal lab network using Nmap and Scapy. The purpose of this lab was to gain hands-on experience with network reconnaissance, service enumeration, and packet analysis
 ### Lab environment
@@ -78,8 +78,8 @@ while you are inside scapy
 ls()           # List all available protocols that this tool comes with and can be used
 ls(IP)         # View various fields with in an IP packet header 
 ```
-to delete a command type clear
 The source tells us where the packet is coming from
+to delete a command type clear
 ### Basic Packet Sniffing
 ```bash
 sniff()         
@@ -111,16 +111,18 @@ paro = _            #type this in the terminal were you run the scapy command, _
 paro.summary()      # shows the summary of what you sniffed, the command you run earlier
 ```
 ### Sniffing on a Specific Network Interface
-### 1. Start network ccapture
-sniff (iface = "br internal")    # specify the interface we want to begin sniffing on
-### 2. Generate interface specific traffic
+#### 1. Start network ccapture
+sniff (iface = "br-internal")    # specify the interface we want to begin sniffing on
+#### 2. Generate interface specific traffic
+```bash
 ping 10.6.6.1      #  or
-http://10.6.6.23   # then open a browser to start the sniff command of a localy hosted site
-### 3. Stop the sniff capture 
+10.6.6.23   # then open a browser to start the sniff command of a localy hosted site in the browser
+```
+#### 3. Stop the sniff capture 
 ```bash
 ctrl + c
 ```
-### 4. Save the results
+#### 4. Save the results
 ```bash
 paro2=_          # assign the underscore to paro 2
 paro2.summary()  # view the summary
@@ -130,18 +132,28 @@ you can also run a command on Nmap to check which devices are present on the net
 nmap ip and default getway e.g
 nmap 10.6.6.1/24
 ## ICMP Filtered Sniffing
-### 1. Capture only ICMP packets
+#### 1. Capture only ICMP packets
 ```bash
-sniff (iface = "br internal", filter="ICMP", count 10 )   # if you want to limit it to ICMP pacts, with out the filert it gives you everything happening on the network
+sniff (iface = "br-internal", filter="ICMP", count=10 )   # if you want to limit it to ICMP pacts, with out the filert it gives you everything happening on the network
 ```
-### 2. Ping ICMP
-Ping 10.6.6.23
-open another terminal window run 10.6.6.23
+#### 2. Ping ICMP
+Ping 10.6.6.23      # run in terminal
+or open in a browser 10.6.6.23  # it will not bring iCMP it will use tcp
 go back to the previous terminal window end the sniff
 ```bash
 ctrl + c
 ```
-### 3. Store capture ICMP packets 
+#### 3. Store capture ICMP packets 
 Paro4=_           # assign to another variable
 paro4.summary()   # view the summary
-paro4.nsummary()  # another way to check what happened, put a value to each packet sniffed
+paro4.nsummary()  # another way to check what happened,a numerical value is assigned to each packets sniffed. helping you concetrate on one packet of your choice
+paro4[4]   # the same number from paro summary you used, then a particular line you want to look at
+type: ipv4
+source IP:10.6.6.23
+destination IP:10.6.6.1
+source Macaddress:02:42:35:c4:06:d6
+destination Macaddress:02:42:0a:06:06:17
+this would be an echo reply
+The Nmap portion involved discovering active hosts, fingerprinting the target operating system, enumerating services, scanning SMB ports, and verifying SMB access. The Scapy portion demonstrated packet sniffing, interface-based capture, ICMP filtering, and packet inspection. Together, these exercises covered fundamental penetration testing reconnaissance and low-level packet analysis techniques used in real-world cybersecurity operations.
+### Ethical Disclaimer
+Important: All activities documented here were performed in a controlled, isolated lab environment with explicit authorization. No scanning, packet capture, or network analysis was conducted on public networks or without permission. This work is strictly educational and demonstrates skills for defensive cybersecurity purposes.        
