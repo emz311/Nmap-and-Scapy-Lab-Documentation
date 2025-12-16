@@ -155,6 +155,11 @@ destination IP:10.6.6.1
 source Macaddress:02:42:35:c4:06:d6
 destination Macaddress:02:42:0a:06:06:17
 this would be an echo reply
+
+
+## Summary
 The Nmap portion involved discovering active hosts, fingerprinting the target operating system, enumerating services, scanning SMB ports, and verifying SMB access. The Scapy portion demonstrated packet sniffing, interface-based capture, ICMP filtering, and packet inspection. Together, these exercises covered fundamental penetration testing reconnaissance and low-level packet analysis techniques used in real-world cybersecurity operations.
+
+
 ### Ethical Disclaimer
 Important: All activities documented here were performed in a controlled, isolated lab environment with explicit authorization. No scanning, packet capture, or network analysis was conducted on public networks or without permission. This work is strictly educational and demonstrates skills for defensive cybersecurity purposes.        
