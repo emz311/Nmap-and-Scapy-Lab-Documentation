@@ -8,7 +8,7 @@ Network Range: 10.6.6.0/24
 Target Host: 10.6.6.23
 Interface Used: br-internal / eth0
 # Nmap Documentation 
-# Host Discovery
+# 1. Host Discovery
 ```bash
 nmap -v
 ```
@@ -21,31 +21,31 @@ This was performed to know the number of host(s) that are available for use.
 sudo nmap -O 10.6.6.23
 ```
 Identify the operating system by analyzing network responses OS is Linux
-# SMB Agressive Enumeration
-### Port 21 Aggressive Service Scan
+# 2. SMB Agressive Enumeration
+### 1. Port 21 Aggressive Service Scan
 ```bash
 nmap -p21 -sV -A -T4 10.6.6.23
 ```
 This command identifies the service running on port 21, detects version information, and performs aggressive scanning. Your output should look like below
 
-## SMB Ports Scan (139 and 445)
+## 2. SMB Ports Scan (139 and 445)
 ```bash
 nmap -A -p139,445 10.6.6.23
 ```
 Enumerates SMB services and gathers additional OS and network information.
 
-## SMB Share Enumeration with NSE Script
+## 3. SMB Share Enumeration with NSE Script
 ```bash
 nmap --script smb-enum-shares.nse -p445 10.6.6.23
 ```
 Detects SMB shares available on the target system
-# SMB Client Verification
+# 3. SMB Client Verification
 ```bash
 smbclient //10.6.6.23/print$ -N
 ```
 Check if anonymous SMB login is allowed
 # Wireshark Lab Documentation
-### Packet Capture with Wireshark/tcpdump
+### 1. Packet Capture with Wireshark/tcpdump
 ```bash
 pwd              
 ifconfig          
@@ -53,7 +53,7 @@ cat /etc/resolv.conf
 ip route         
 ```
 To verify network configuration before capturing packets
-Packet Capture with tcpdump
+### 2. Packet Capture with tcpdump
 ```bash
 sudo tcpdump -i eth0 -s 0 -w wagwan.pcap
 ```
@@ -66,8 +66,8 @@ Verify
 ```bash
 ls wagwan.pcap
 ```
-# Scapy Lab Documentation
-### Launch Scapy Environment (Basic Command)
+# 4. Scapy Lab Documentation
+### 1. Launch Scapy Environment (Basic Command)
 ```bash
 sudo su        # Run as privileged user,
 man scapy      # View Scapy commands
@@ -80,7 +80,7 @@ ls(IP)         # View various fields with in an IP packet header
 ```
 The source tells us where the packet is coming from
 to delete a command type clear
-### Basic Packet Sniffing
+### 2. Basic Packet Sniffing
 ```bash
 sniff()         
 ```
@@ -106,11 +106,12 @@ sniffed: TCP: 0 UDP: 12 ICMP: 18 Other:4
 if you want characters to sign to a vairable, instead of always typing that command from example Wagwan asign W to it, so the network sniffed is a signed to Wagwan
 once you type W the program knows that you are referring to Wagwan
 Variables serve as containers.
+### 3. Store and summarize captured packets
 ```bash
 paro = _            #type this in the terminal were you run the scapy command, _ holds the last command that you run
 paro.summary()      # shows the summary of what you sniffed, the command you run earlier
 ```
-### Sniffing on a Specific Network Interface
+## Sniffing on a Specific Network Interface
 #### 1. Start network ccapture
 sniff (iface = "br-internal")    # specify the interface we want to begin sniffing on
 #### 2. Generate interface specific traffic
