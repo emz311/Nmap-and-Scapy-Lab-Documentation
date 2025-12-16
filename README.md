@@ -70,13 +70,13 @@ ls wagwan.pcap
 ### Launch Scapy Environment (Basic Command)
 ```bash
 sudo su        # Run as privileged user,
-man scapy      # View Scapy manual
+man scapy      # View Scapy commands
 scapy          # Enter the Scapy interactive environment
 ```
 while you are inside scapy
 ```bash
-ls()           # List all available protocols
-ls(IP)         # View IP packet header type
+ls()           # List all available protocols that this tool comes with and can be used
+ls(IP)         # View various fields with in an IP packet header 
 ```
 to delete a command type clear
 The source tells us where the packet is coming from
@@ -84,7 +84,54 @@ The source tells us where the packet is coming from
 ```bash
 sniff()         
 ```
-sniff function help sniff network traffic like wireshark or tcpdump
-to sniff a website open another terminal window and type ping google.com
-to cancel requests press ctrl + Z together.
+sniff function helps sniff network traffic and observet the traffic
+Open a second terminal as the attacker machine 
+ping any domain name of your choice
+you can use wireshark, it give you the graphicalised view in a form of GUI
+```bash
+ping google.com
+```
+to stop capture 
+```bash
+ctrl + c
+```
+```bash
+ping -c 4 google.com  # c for count and 4 is the number of packets you want to check
+```
+go to the intial terminal window and type
+```bash
+ctrl + c
+```
+sniffed: TCP: 0 UDP: 12 ICMP: 18 Other:4
+if you want characters to sign to a vairable, instead of always typing that command from example Wagwan asign W to it, so the network sniffed is a signed to Wagwan
+once you type W the program knows that you are referring to Wagwan
+Variables serve as containers.
+```bash
+paro = _            #type this in the terminal were you run the scapy command, _ holds the last command that you run
+paro.summary()     # shows the summary of what you sniffed, the command you run earlier
+```
+## Sniffing on a Specific Network Interface
+sniff (iface = "br internal")    # specify the interface we want to begin sniffing on
+## Generate interface specific traffic
+ping 10.6.6.1      #  or
+http://10.6.6.23   # then open a browser to start the sniff command of a localy hosted site
+to stop capture 
+```bash
+ctrl + c
+```
+paro2=_        # assign the underscore to paro 2
+paro2.summary()  # view the summary 
+you can use wireshark to view in detail
+you can also run a command on Nmap to check which devices are present on the network
+nmap ip and default getway e.g
+nmap 10.6.6.1/24
 
+sniff (iface = "br internal", filter="ICMP", count 10 ) # if you want to limit it to ICMP pacts, with out the filert it gives you everything happening on the network
+open another terminal window run 10.6.6.23
+go back to the previous terminal window end the sniff
+```bash
+ctrl + c
+``` 
+Paro4=_           # assign to another variable
+paro4.summary()   # view the summary
+paro4.nsummary()  # another way to check what happened, put a value to each packet sniffed
