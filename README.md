@@ -96,7 +96,7 @@ to stop capture
 ctrl + c
 ```
 ```bash
-ping -c 4 google.com  # c for count and 4 is the number of packets you want to check
+ping -c 4 google.com    # c for count and 4 is the number of packets you want to check
 ```
 go to the intial terminal window and type
 ```bash
@@ -108,30 +108,40 @@ once you type W the program knows that you are referring to Wagwan
 Variables serve as containers.
 ```bash
 paro = _            #type this in the terminal were you run the scapy command, _ holds the last command that you run
-paro.summary()     # shows the summary of what you sniffed, the command you run earlier
+paro.summary()      # shows the summary of what you sniffed, the command you run earlier
 ```
-## Sniffing on a Specific Network Interface
+### Sniffing on a Specific Network Interface
+### 1. Start network ccapture
 sniff (iface = "br internal")    # specify the interface we want to begin sniffing on
-## Generate interface specific traffic
+### 2. Generate interface specific traffic
 ping 10.6.6.1      #  or
 http://10.6.6.23   # then open a browser to start the sniff command of a localy hosted site
-to stop capture 
+### 3. Stop the sniff capture 
 ```bash
 ctrl + c
 ```
-paro2=_        # assign the underscore to paro 2
-paro2.summary()  # view the summary 
+### 4. Save the results
+```bash
+paro2=_          # assign the underscore to paro 2
+paro2.summary()  # view the summary
+```
 you can use wireshark to view in detail
 you can also run a command on Nmap to check which devices are present on the network
 nmap ip and default getway e.g
 nmap 10.6.6.1/24
-
-sniff (iface = "br internal", filter="ICMP", count 10 ) # if you want to limit it to ICMP pacts, with out the filert it gives you everything happening on the network
+## ICMP Filtered Sniffing
+### 1. Capture only ICMP packets
+```bash
+sniff (iface = "br internal", filter="ICMP", count 10 )   # if you want to limit it to ICMP pacts, with out the filert it gives you everything happening on the network
+```
+### 2. Ping ICMP
+Ping 10.6.6.23
 open another terminal window run 10.6.6.23
 go back to the previous terminal window end the sniff
 ```bash
 ctrl + c
-``` 
+```
+### 3. Store capture ICMP packets 
 Paro4=_           # assign to another variable
 paro4.summary()   # view the summary
 paro4.nsummary()  # another way to check what happened, put a value to each packet sniffed
