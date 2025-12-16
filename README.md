@@ -145,10 +145,12 @@ go back to the previous terminal window end the sniff
 ctrl + c
 ```
 #### 3. Store capture ICMP packets 
+```bash
 Paro4=_           # assign to another variable
 paro4.summary()   # view the summary
 paro4.nsummary()  # another way to check what happened,a numerical value is assigned to each packets sniffed. helping you concetrate on one packet of your choice
-paro4[4]   # the same number from paro summary you used, then a particular line you want to look at
+paro4[4]          # the same number from paro summary you used, then a particular line you want to look at
+```
 type: ipv4
 source IP:10.6.6.23
 destination IP:10.6.6.1
